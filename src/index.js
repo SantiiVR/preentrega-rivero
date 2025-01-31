@@ -1,7 +1,8 @@
 import express from "express";
 import morgan from "morgan";
 import bodyParser from "body-parser";
-import  {ProductManager}  from "./data/productManager.js";
+import  {ProductManager}  from "./utils/productManager.js";
+import CartManager from "./utils/cartManager.js";
 
 const product1 = {
     id: 1110,
@@ -49,7 +50,11 @@ const pm= new ProductManager("./src/data/product.json")
 // pm.addProduct(product3)
 // pm.addProduct(product4)
 // pm.deleteProductById(4)
-pm.updateProduct(4,product2)
+// pm.updateProduct(4,product2)
+
+const cm=new CartManager("./src/data/cart.json")
+
+cm.createEmptyCart()
 
 // console.log(pm.getProducts())
 
