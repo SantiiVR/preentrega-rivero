@@ -1,0 +1,20 @@
+[
+  {
+    "id": 3,
+    "title": "foco led",
+    "description": "un led comun",
+    "price": 600,
+    "thumbnail": "",
+    "code": "23417556",
+    "stock": 12
+  },
+  {
+    "id": 4,
+    "title": "lamparas editadas",
+    "description": "un lampara comun",
+    "price": 6000,
+    "thumbnail": "",
+    "code": "23410007777556",
+    "stock": 12
+  }
+]
