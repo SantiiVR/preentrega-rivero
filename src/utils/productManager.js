@@ -1,6 +1,7 @@
 import * as fs from "fs/promises";
+import { nanoid } from "nanoid";
 
-export class ProductManager {
+class ProductManager {
     products = [];
     static id = 1;
 
@@ -21,8 +22,9 @@ export class ProductManager {
             } else {
                 product.id = 1;
             }
-            this.products.push(product);
+            this.products.push({...product,code:nanoid()});
             await fs.writeFile(this.path, JSON.stringify(this.products, null, 2));
+            return product
             console.log("Producto agregado:", product);
         } catch (error) {
             console.error("Error al guardar el producto:", error);
@@ -78,14 +80,16 @@ export class ProductManager {
     
             if (productoFiltrado.length === this.products.length) {
                 console.log("Producto no encontrado");
-                return;
+                return false;
             }
     
             this.products = productoFiltrado;
             await fs.writeFile(this.path, JSON.stringify(this.products, null, 2));
             console.log("Producto eliminado:", id);
+            return true;
         } catch (error) {
             console.error("Error al eliminar el producto:", error);
+    
         }
     };
 
@@ -109,3 +113,5 @@ export class ProductManager {
         }
     };
 }
+
+export default ProductManager

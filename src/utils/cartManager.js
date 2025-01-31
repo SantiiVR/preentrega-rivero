@@ -50,6 +50,52 @@ try {
         return [];
     };
 
+    getCartProductsById = async (id) => {
+        try {
+            this.carts=await this.getCarts()
+            const cart=this.carts.find((c) => c.id === id)
+            if (!cart) {
+                console.log("carrito no encontrado")
+                return 
+            }
+            console.log("el carrito id: "+ id + ": ",cart)
+            return cart
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    addProductToCart = async (cid, pid, qty) => {
+        try {
+            // Verificar la existencia del carrito
+            const cart = await this.getCartProductsById(cid);
+            if (!cart) {
+                console.log("El carrito con id: " + cid + " no existe");
+                return;
+            }
+    
+            // Verificar si el producto ya existe en el carrito
+            const existProduct = cart.products.find((p) => p.id === pid);
+            if (!existProduct) {
+                // Si no existe, agregar el producto con la cantidad especificada
+                const newProduct = { id: pid, quantity: qty };
+                cart.products.push(newProduct);
+            } else {
+                // Si existe, incrementar la cantidad
+                existProduct.quantity += qty;
+            }
+    
+            // Actualizar la lista de carritos
+            this.carts = await this.getCarts();
+            const newCarts = this.carts.map((c) => (c.id === cid ? cart : c));
+            await fs.writeFile(this.path, JSON.stringify(newCarts, null, 2));
+    
+            console.log("Producto agregado:", cart);
+            return cart;
+        } catch (error) {
+            console.error("No se pudo agregar el producto:", error);
+        }
+    };
 }
 
 export default CartManager
