@@ -1,0 +1,28 @@
+<!-- home.handlebars -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos</title>
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto py-8">
+        <h1 class="text-3xl font-semibold text-center mb-8">Nuestros Productos</h1>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {{#each products}}
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <img src="{{this.thumbnail}}" alt="{{this.title}}" class="w-full h-40 object-cover mb-4 rounded-md">
+                    <h2 class="text-xl font-semibold text-gray-800">{{this.title}}</h2>
+                    <p class="text-gray-600 mb-4">{{this.description}}</p>
+                    <p class="text-lg font-bold text-gray-900">${{this.price}}</p>
+                    <p class="text-sm text-gray-500">Stock: {{this.stock}}</p>
+                    <a href="#" class="mt-4 inline-block text-white bg-blue-500 hover:bg-blue-600 rounded-md px-4 py-2 text-center">
+                        Ver más
+                    </a>
+                </div>
+            {{/each}}
+        </div>
+    </div>
+</body>
+</html>

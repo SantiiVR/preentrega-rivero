@@ -1,5 +1,7 @@
 import { Router } from "express";
 import ProductManager from "../utils/productManager.js";
+import { socketServer } from "../index.js";
+
 
 const pm=new ProductManager("./src/data/product.json")
 
@@ -46,6 +48,8 @@ router.get("/:id",async (req, res) => {
             const newProduct=await pm.addProduct({
                 title,description,code,price,stock,category,thumbnail
             })
+            const newProductList= await pm.getProducts()
+            socketServer.emit("products", newProductList)
             res.status(201).json(newProduct)
         } catch (error) {
             console.log(error)
@@ -74,6 +78,8 @@ router.get("/:id",async (req, res) => {
                 const updateProduct=await pm.updateProduct(+id,{
                     title,description,price,stock,category,thumbnail
                 })
+                const newProductList= await pm.getProducts()
+                socketServer.emit("products", newProductList)
                 res.status(201).json(updateProduct)
             } catch (error) {
                 console.log(error)
@@ -89,6 +95,8 @@ router.get("/:id",async (req, res) => {
                     if (deleteProduct) {
                         res.status(200).json({message:"producto eliminado"})
                     }
+                    const newProductList= await pm.getProducts()
+                    socketServer.emit("products", newProductList)
                     res.status(404).json({message:"producto no encontrado :c"})
                 } catch (error) {
                     res.status(500).json({message:"ocurrio un error"})

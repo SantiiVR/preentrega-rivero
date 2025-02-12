@@ -1,0 +1,22 @@
+[
+  {
+    "title": "linterna desde api",
+    "description": "una lampara desde api",
+    "code": "yt0iS255NDHd04gSyqNP9",
+    "price": 200,
+    "stock": 10,
+    "category": "electronic",
+    "thumbnail": "sadasfasdasdsadadawds.jpg",
+    "id": 1
+  },
+  {
+    "title": "mesita",
+    "description": "una mesa",
+    "code": "ofPGJc7zcJ_E6qCCvXxdT",
+    "price": 2000,
+    "stock": 110,
+    "category": "muebles",
+    "thumbnail": "sadasfasdasdsadadawds.jpg",
+    "id": 3
+  }
+]
