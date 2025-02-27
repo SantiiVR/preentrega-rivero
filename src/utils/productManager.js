@@ -57,7 +57,7 @@ class ProductManager {
         try {
             this.products = await this.getProducts();
     
-            // Asegurarse de que el ID proporcionado sea una cadena
+            
             const prod = this.products.find((p) => p.id === id);
     
             if (prod) {

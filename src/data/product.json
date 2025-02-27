@@ -18,5 +18,14 @@
     "category": "muebles",
     "thumbnail": "sadasfasdasdsadadawds.jpg",
     "id": 3
+  },
+  {
+    "title": "asd",
+    "description": "asd",
+    "category": "asd",
+    "thumbnail": "asd",
+    "stock": "4",
+    "id": 4,
+    "code": "ieROGGOE-h4K9Xnk0W1uB"
   }
 ]

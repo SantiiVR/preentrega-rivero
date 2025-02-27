@@ -12,10 +12,10 @@ import ProductManager from "./utils/productManager.js";
 
 const app = express()
 let rtp
+const pm=new ProductManager("./src/data/product.json")
 
 const getrtp= async () => {
   try {
-    const pm=new ProductManager("./src/data/product.json")
     rtp=await pm.getProducts()
   } catch (error) {
     
@@ -42,8 +42,17 @@ const httpServer=app.listen(8080, (req, res) => {
 export const socketServer= new Server(httpServer)
 socketServer.on("connection", (socket) => {
   console.log("conexion establecida", )
-  socket.on("mensaje",(mensaje) => {
-    console.log(mensaje)
+  socket.on("newProduct",async(producData) => {
+    try {
+      const borrarP= await pm.deleteProductById(id)
+
+      const newProduct= await pm.addProduct(producData)
+      
+      getrtp()
+      socket.emit("products",rtp )
+    } catch (error) {
+      console.error("error añadiendo producto: ", error.message)
+    }
   })
   getrtp()
   socket.emit("products",rtp )
