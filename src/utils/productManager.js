@@ -24,8 +24,8 @@ class ProductManager {
             }
             this.products.push({...product,code:nanoid()});
             await fs.writeFile(this.path, JSON.stringify(this.products, null, 2));
-            return product
             console.log("Producto agregado:", product);
+            return product
         } catch (error) {
             console.error("Error al guardar el producto:", error);
         }

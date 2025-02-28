@@ -40,20 +40,23 @@ const httpServer=app.listen(8080, (req, res) => {
 })
 //serverwebsocket
 export const socketServer= new Server(httpServer)
+// En el servidor (Socket.IO)
 socketServer.on("connection", (socket) => {
-  console.log("conexion establecida", )
-  socket.on("newProduct",async(producData) => {
+  // Al recibir un nuevo producto desde el cliente
+  socket.on("newProduct", async (productData) => {
     try {
-      const borrarP= await pm.deleteProductById(id)
-
-      const newProduct= await pm.addProduct(producData)
+      // Añadir el nuevo producto
+      await pm.addProduct(productData);
       
-      getrtp()
-      socket.emit("products",rtp )
+      // Asegurarnos de que obtenemos los productos actualizados
+      await getrtp();  // Esperar a que rtp esté actualizado
+      socket.emit("products", rtp);  // Enviar la lista de productos actualizada a todos los clientes
     } catch (error) {
-      console.error("error añadiendo producto: ", error.message)
+      console.error("Error añadiendo producto: ", error.message);
     }
-  })
-  getrtp()
-  socket.emit("products",rtp )
-})
+  });
+
+  // Emitir la lista de productos al conectar un nuevo cliente
+  getrtp();  // Esperar a que rtp esté actualizado
+  socket.emit("products", rtp);  // Emitir productos al cliente
+});

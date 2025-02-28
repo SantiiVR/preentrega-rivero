@@ -1,31 +1,42 @@
 [
   {
-    "title": "linterna desde api",
-    "description": "una lampara desde api",
-    "code": "yt0iS255NDHd04gSyqNP9",
-    "price": 200,
-    "stock": 10,
-    "category": "electronic",
-    "thumbnail": "sadasfasdasdsadadawds.jpg",
-    "id": 1
+    "title": "heladera",
+    "description": "una heladera que enfria",
+    "category": "electrodomestico",
+    "stock": "3",
+    "price": "100000",
+    "thumbnail": "nohayimg",
+    "id": 11,
+    "code": "QxvI8lIsBiVgEufT23Kmr"
   },
   {
-    "title": "mesita",
-    "description": "una mesa",
-    "code": "ofPGJc7zcJ_E6qCCvXxdT",
-    "price": 2000,
-    "stock": 110,
-    "category": "muebles",
-    "thumbnail": "sadasfasdasdsadadawds.jpg",
-    "id": 3
+    "title": "heladera",
+    "description": "una heladera que enfria",
+    "category": "electrodomestico",
+    "stock": "3",
+    "price": "100000",
+    "thumbnail": "nohayimg",
+    "id": 10,
+    "code": "z6JZ5I6rdyJafAilAqfbg"
   },
   {
-    "title": "asd",
-    "description": "asd",
-    "category": "asd",
+    "title": "monitor",
+    "description": "monitor agregado desde form",
+    "category": "componentes",
     "thumbnail": "asd",
-    "stock": "4",
-    "id": 4,
-    "code": "ieROGGOE-h4K9Xnk0W1uB"
+    "stock": "22",
+    "price": "3434",
+    "id": 6,
+    "code": "5JoAE35NVsENT1iZQ7f_A"
+  },
+  {
+    "title": "Ventilador",
+    "description": "un ventilador comun",
+    "category": "electrodomestico",
+    "stock": "23",
+    "price": "100000",
+    "thumbnail": "asdasadsdasd",
+    "id": 12,
+    "code": "9wWA8npt7zwh4577uaVO8"
   }
 ]
