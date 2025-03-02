@@ -104,7 +104,7 @@ class ProductManager {
             await this.deleteProductById(id);
             this.products = await this.getProducts();
             this.products.push(newProduct);
-            this.products.sort((a, b) => a.id - b.id); // Ordenar de menor a mayor antes de guardar
+            this.products.sort((a, b) => a.id - b.id); 
             await fs.writeFile(this.path, JSON.stringify(this.products, null, 2));
             console.log("Producto actualizado:", newProduct);
             return newProduct

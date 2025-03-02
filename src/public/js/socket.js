@@ -34,7 +34,7 @@ async function eliminarProducto(id) {
 const socket = io();
 
 socket.on("products", async (products) => {
-  await renderProducts(products);  // Asegúrate de que los productos estén actualizados
+  await renderProducts(products); 
 });
 
 async function renderProducts(products) {

@@ -8,8 +8,20 @@ import handlebars from "express-handlebars";
 import viewRouter from "./routes/views.routes.js"
 import { Server } from "socket.io";
 import ProductManager from "./utils/productManager.js";
+import mongoose from "mongoose";
+import userRouter from "./routes/user.routes.js";
+import 'dotenv/config'
 
 
+const connectMongoDB = async () => {
+  try {
+    await mongoose.connect(process.env.MONGO_URL)
+    console.log("conectado con mongo db")
+  } catch (error) {
+    console.log("error al conectar")
+  }
+}
+connectMongoDB()
 const app = express()
 let rtp
 const pm=new ProductManager("./src/data/product.json")
@@ -34,9 +46,10 @@ app.use("/public", express.static(_dirname + "/public"))
 app.use("/", viewRouter)
 app.use("/api/products", productRouter)
 app.use("/api/cart", cartRouter)
+app.use("/api/user", userRouter)
 //serverhttp
-const httpServer=app.listen(8080, (req, res) => {
-    console.log("escuchando en el puerto 8080")
+const httpServer=app.listen(process.env.PORT || 8080, (req, res) => {
+    console.log(`escuchando en el puerto ${process.env.PORT}`)
 })
 //serverwebsocket
 export const socketServer= new Server(httpServer)
