@@ -25,7 +25,6 @@ try {
         } catch (error) {
             console.error("Error al guardar el carrito:", error);
         }
-  
 }
 
     getCarts = async () => {
